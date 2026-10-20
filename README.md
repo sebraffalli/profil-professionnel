@@ -8,7 +8,7 @@ Ce dépôt met à disposition un **dossier professionnel détaillé**, en compl�
 ## Accéder au dossier
 
 - **[Lire le dossier au format Markdown](./profil-professionnel.md)** — version structurée, adaptée à l'analyse par LLM et consultable directement sur GitHub.
-- **Version PDF :** publication en préparation. En attendant, la version Markdown ci-dessus peut être téléchargée et analysée directement.
+- **[Télécharger le dossier au format PDF](./profil-professionnel.pdf)** — version destinée à la lecture, au partage et à la pièce jointe LinkedIn.
 
 ## Comment l’interroger avec un LLM ?
 
