@@ -1,0 +1,34 @@
+name: Générer le dossier PDF
+on:
+  push:
+    branches: [main]
+    paths:
+      - "profil-professionnel.md"
+      - "scripts/build_pdf.py"
+      - ".github/workflows/pdf.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installer les dépendances
+        run: pip install "mistune>=3,<4" "weasyprint>=65,<70"
+      - name: Générer le PDF
+        run: python scripts/build_pdf.py
+      - name: Publier le PDF actualisé
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profil-professionnel.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Actualiser le dossier professionnel PDF"
+            git push
+          fi
